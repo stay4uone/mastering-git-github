@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Use Environment Variable
         run: |
-          echo "Value of MY_VAR from previous job is ${{ needs.build.outputs.my_var }}"
+          echo "Value of MY_VAR from previous job is ${{ needs.build.outputs.MY_VAR }}"
     
       # This step is only executed if MY_VAR is "example"
       - name: Deploy App
