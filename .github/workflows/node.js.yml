@@ -10,6 +10,8 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    env:
+      IN_VERSION: green
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -24,7 +26,9 @@ jobs:
       id: set_output
       run: echo "in_version=blue" >> $GITHUB_ENV
     - name: Check
-      run: echo "Value is $in_version"
+      run: |
+        echo "Value is $IN_VERSION"
+        IN_VERSION=blue
     
 
   job2:
@@ -32,9 +36,7 @@ jobs:
     needs: job1
     steps:
      - run: echo ${{ github.job }}
-     - run: echo "This is test"
-     - name: Check Again
-       run: echo "Value is $in_version"
+     - run: echo "This is test"     
      - name: check output
-       run: echo "Value is ${{ needs.job1.outputs.in_version }}"
+       run: echo "Value is ${{ needs.job1.outputs.IN_VERSION }}"
        
