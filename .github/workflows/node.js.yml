@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       IN_VERSION: green
+    outputs:
+      in_version: ${{ env.IN_VERSION }}
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -21,14 +23,12 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
-    - name: Set output
-      id: set_output
-      run: echo "in_version=blue" >> $GITHUB_ENV
+    - run: npm test    
     - name: Check
       run: |
         echo "Value is $IN_VERSION"
         IN_VERSION=blue
+        echo "Value is $IN_VERSION"
     
 
   job2:
@@ -38,5 +38,5 @@ jobs:
      - run: echo ${{ github.job }}
      - run: echo "This is test"     
      - name: check output
-       run: echo "Value is ${{ needs.job1.outputs.IN_VERSION }}"
+       run: echo "Value is ${{ needs.job1.outputs.in_version }}"
        
