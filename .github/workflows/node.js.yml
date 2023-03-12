@@ -22,7 +22,9 @@ jobs:
     - run: npm test
     - name: Set output
       id: set_output
-      run: echo "::set-env name=version::blue"    
+      run: echo "in_version=blue" >> $GITHUB_ENV
+    - name: Check
+      run: echo "Value is $in_version"
     
 
   job2:
@@ -31,7 +33,7 @@ jobs:
     steps:
      - run: echo ${{ github.job }}
      - run: echo "This is test"
-     - name: Get outout
-       run: echo ${{ needs.job1.outputs.version }}
+     - name: Check Again
+       run: echo "Value is $in_version"
     
        
