@@ -31,6 +31,6 @@ jobs:
     steps:
      - run: echo ${{ github.job }}
      - run: echo "This is test"
-     #- name: Get outout
-     #  run: echo "This output is ${{ jobs.job1.outputs.version }}"
+     - name: Get outout
+       run: echo "This output is ${{ jobs.job1.outputs.version }}"
        
