@@ -31,5 +31,5 @@ jobs:
      - run: echo ${{ github.job }}
      - run: echo "This is test"
      - name: Get outout
-       run: echo "This output is ${{ jobs.job1.outputs.version }}"
+       run: echo ${{ jobs.job1.outputs.version }}
        
