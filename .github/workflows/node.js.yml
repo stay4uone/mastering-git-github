@@ -22,7 +22,7 @@ jobs:
     - run: npm test
     - name: Set output
       id: set_output
-      run: echo "::set-output name=version::blue"    
+      run: echo "::set-env name=version::blue"    
 
   job2:
     runs-on: ubuntu-latest 
@@ -31,5 +31,5 @@ jobs:
      - run: echo ${{ github.job }}
      - run: echo "This is test"
      - name: Get outout
-       run: echo ${{ jobs.job1.outputs.version }}
+       run: echo $version
        
