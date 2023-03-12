@@ -6,14 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set ENV Variable
-        run: echo "::set-env name=MY_VARIABLE::some-value"
-      - name: Run Job 2
-        run: |
-          echo "The value of MY_VARIABLE is $MY_VARIABLE"
-          echo "::set-env name=MY_VARIABLE2::another-value"
+        run: echo "action_state=yellow" >> $GITHUB_ENV
           
   job2:
     runs-on: ubuntu-latest
     steps:
       - name: Print ENV Variable
-        run: echo "The value of MY_VARIABLE2 is $MY_VARIABLE2"
+        run: echo "${{ env.action_state }}"
