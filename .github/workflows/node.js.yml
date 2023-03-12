@@ -22,7 +22,8 @@ jobs:
     - run: npm test
     - name: Set output
       id: set_output
-      run: echo "::set-env name=version::blue"    
+    #  run: echo "::set-env name=version::blue"    
+      run: echo "action_state=yellow" >> $GITHUB_ENV
 
   job2:
     runs-on: ubuntu-latest 
@@ -32,4 +33,5 @@ jobs:
      - run: echo "This is test"
      - name: Get outout
        run: echo $version
+     - run: echo "${{ env.action_state }}"
        
