@@ -10,6 +10,7 @@ jobs:
           
   job2:
     runs-on: ubuntu-latest
+    needs: job1
     steps:
       - name: Print ENV Variable
         run: echo "${{ env.action_state }}"
