@@ -36,5 +36,5 @@ jobs:
      - name: Check Again
        run: echo "Value is $in_version"
      - name: check output
-       run: echo "Value is ${{ needs.job1.outputs.in_version }}
+       run: echo "Value is ${{ needs.job1.outputs.in_version }}"
        
