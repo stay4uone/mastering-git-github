@@ -21,7 +21,9 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - run: echo "::set-output name=version::blue"
+    - name: Set output
+      id: set_output
+      run: echo "::set-output name=version::blue"
 
   job2:
     runs-on: ubuntu-latest 
@@ -29,5 +31,6 @@ jobs:
     steps:
      - run: echo ${{ github.job }}
      - run: echo "This is test"
-     - run: echo "This out is ${{ jobs.job1.outputs.version }}"
+     - name: Get outout
+       run: echo "This output is ${{ jobs.job1.outputs.version }}"
        
