@@ -10,8 +10,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  job1:
     runs-on: ubuntu-latest    
 
     steps:
@@ -24,3 +23,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
+  job2:
+    needs: job1
+    steps:
+     - run: echo ${{ github.job }}
