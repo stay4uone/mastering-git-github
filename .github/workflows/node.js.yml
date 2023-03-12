@@ -11,9 +11,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     env:
-      IN_VERSION: green
-    outputs:
-      in_version: ${{ env.IN_VERSION }}
+      IN_VERSION: green   
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -29,6 +27,8 @@ jobs:
         echo "Value is $IN_VERSION"
         IN_VERSION=blue
         echo "Value is $IN_VERSION"
+    outputs:
+      in_version: ${{ env.IN_VERSION }}
     
 
   job2:
