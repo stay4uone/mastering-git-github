@@ -9,8 +9,7 @@ on:
 
 jobs:
   job1:
-    runs-on: ubuntu-latest    
-
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -23,7 +22,7 @@ jobs:
     - run: npm test
     - name: Set output
       id: set_output
-      run: echo "::set-output name=version::blue"
+      run: echo "::set-output name=version::blue"    
 
   job2:
     runs-on: ubuntu-latest 
