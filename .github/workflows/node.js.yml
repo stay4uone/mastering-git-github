@@ -33,5 +33,5 @@ jobs:
      - run: echo "This is test"
      - name: Get outout
        run: echo $version
-     - run: echo "${{ env.action_state }}"
+     - run: echo "Test: ${{ env.action_state }}"
        
